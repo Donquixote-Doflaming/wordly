@@ -49,10 +49,7 @@ All links are relative, so `index.html` and the five list pages must stay in the
 1. Clone or download the repository.
 2. Open `index.html` in any modern browser.
 
-```bash
-git clone https://github.com/rifat440/CYBER-VOCAB.git
-cd CYBER-VOCAB
-```
+
 
 ## Deploy on GitHub Pages
 
