@@ -2,7 +2,7 @@
 
 A clean, editorial vocabulary hub. One homepage, five study lists. Pick a list, flip the cards, take the quiz — progress is saved in your browser.
 
-**Live site:** https://rifat440.github.io/CYBER-VOCAB/
+**Live site:** https://github.com/Donquixote-Doflaming/wordly.git
 
 ---
 
