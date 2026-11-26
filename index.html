@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vocabulary flashcards &amp; quizzes | wordly</title>
+<meta name="description" content="Five vocabulary lists, one clean routine. Flashcards, quizzes, and progress that sticks.">
+<link rel="icon" type="image/png" href="brain.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Open+Sans:wght@400;600&family=Work+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff; --ink:#111; --soft:#59594f; --dim:#8f8a80; --pencil:#b8b8b3;
+  --rule:#e9e9e6; --wash:#f3f3f1; --blue:#00f;
+  --display:'Work Sans',system-ui,sans-serif;
+  --body:'Open Sans',system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
+  --brush:'Caveat',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--blue);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,48px) 56px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin:0 0 8px}
+header .inner{max-width:1120px;margin:0 auto;padding:15px clamp(16px,4vw,48px);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em}
+.logo .mark{width:36px;height:22px;flex:none}
+nav{display:flex;gap:26px}
+nav a{font-family:var(--display);font-weight:700;font-size:15px;border-bottom:2px solid var(--ink);padding-bottom:2px;transition:color .15s,border-color .15s}
+nav a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+
+/* hero */
+.hero{padding:64px 0 44px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--dim);text-transform:uppercase;margin-bottom:22px}
+.eyebrow.blue{color:var(--blue)}
+.hero h1{font-family:var(--display);font-weight:800;line-height:1.04;letter-spacing:-.028em;font-size:clamp(40px,7.2vw,78px)}
+.circ{position:relative;display:inline-block;white-space:nowrap}
+.circ::before{content:"";position:absolute;left:-7%;top:-16%;width:114%;height:132%;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 120'%3E%3Cpath d='M232 16C170 2 60 4 26 34 0 58 18 98 84 110c56 10 152 6 194-16 24-12 26-38 4-52-16-10-40-12-56-10' fill='none' stroke='%230000ff' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M228 16c8-7 19-9 27-5' fill='none' stroke='%230000ff' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.und{position:relative;white-space:nowrap}
+.und::after{content:"";position:absolute;left:2%;bottom:-.16em;width:96%;height:.32em;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24'%3E%3Cpath d='M8 12C70 6 160 16 230 8' fill='none' stroke='%230000ff' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M24 20c80-4 180 4 238-3' fill='none' stroke='%230000ff' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.lead{color:var(--soft);font-size:19px;max-width:56ch;margin-top:30px}
+.links{margin-top:30px;display:flex;flex-wrap:wrap;gap:28px}
+.links a{font-family:var(--display);font-weight:700;font-size:16px;color:var(--blue);border-bottom:2px solid var(--blue);padding-bottom:2px}
+.links a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* squiggle divider */
+.squiggle{display:block;width:100%;height:56px;margin:8px 0 4px}
+
+/* sections */
+section{padding:48px 0 8px}
+.sec-head{max-width:760px}
+.sec-head h2{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-.025em;font-size:clamp(30px,4.6vw,52px);margin-top:14px}
+.sec-head .brush{display:inline-block;font-family:var(--brush);font-size:26px;color:var(--blue);transform:rotate(-2deg);margin-top:10px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:34px}
+.card{position:relative;display:flex;flex-direction:column;gap:12px;background:#fff;border:1px solid var(--rule);border-radius:14px;padding:26px 26px 22px;transition:background .15s,border-color .15s}
+.card:hover{background:var(--wash);border-color:var(--pencil)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.card h3{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.015em;line-height:1.15;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card h3 i{font-style:normal;color:var(--blue);transition:transform .15s}
+.card:hover h3 i{transform:translateX(6px)}
+.card .brush{font-family:var(--brush);font-size:21px;color:var(--blue);margin-top:-6px;transform:rotate(-1.5deg)}
+.card p{color:var(--soft);font-size:15px;line-height:1.65;flex:1}
+.pct{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:6px}
+.pct b{font-family:var(--display);font-weight:800;font-size:30px;line-height:1}
+.pct small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+.bar{height:4px;border-radius:2px;background:var(--rule);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:2px;background:var(--blue);transition:width .5s ease}
+
+/* how it works */
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:44px;margin-top:44px}
+.feat .icon{height:56px;margin-bottom:18px}
+.feat .icon svg{height:56px;width:auto}
+.feat h3{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.015em;display:flex;align-items:baseline;gap:10px}
+.feat h3 i{font-style:normal;color:var(--blue)}
+.feat .brush{display:block;font-family:var(--brush);font-size:21px;color:var(--blue);margin:2px 0 12px;transform:rotate(-1.5deg)}
+.feat p{color:var(--soft);font-size:15px;line-height:1.65}
+
+/* footer */
+footer{border-top:1px solid var(--rule);margin-top:72px;padding-top:40px}
+.signoff{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.2vw,34px);letter-spacing:-.02em}
+.fdesc{color:var(--soft);font-size:15px;line-height:1.75;max-width:58ch;margin-top:16px}
+.fine{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:baseline;border-top:1px solid var(--rule);margin-top:30px;padding:18px 0 6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+.fine b{color:var(--ink);font-weight:700}
+.fine .brush{font-family:var(--brush);font-size:19px;letter-spacing:.02em;color:var(--blue);text-transform:none}
+
+@media (max-width:760px){
+  .hero{padding:44px 0 32px}
+  nav{gap:16px}
+  nav a{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <a class="logo" href="index.html"><svg class="mark" viewBox="0 0 44 26" aria-hidden="true"><path d="M3 15c3-9 7 5 11-2s7-8 11-1 7 7 11 0 5-3 5-3" fill="none" stroke="#0000ff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>wordly</a>
+    <nav><a href="#shelf">the lists ↓</a><a href="#how">how it works →</a></nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Vocabulary · Flashcards · Quizzes</p>
+    <h1>Powered by <span class="circ">words.</span><br>Sharpened by recall.<br>Built to <span class="und">stick.</span></h1>
+    <p class="lead">Five word lists, one clean routine. Flip the cards, take the quiz, watch the bar fill — your progress is saved right in your browser.</p>
+    <p class="links"><a href="#shelf">see the lists ↓</a><a href="gre-vocab.html">in a hurry? jump to gre →</a></p>
+  </section>
+
+  <svg class="squiggle" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34C120 10 240 52 380 32S620 8 760 28c52 8 76 22 88 10 9-9 2-22-11-19-11 3-12 19 2 21 14 2 22-8 27-16 8 8 22 24 52 18 52-10 152-22 282-2" fill="none" stroke="#0000ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+
+  <section id="shelf">
+    <div class="sec-head">
+      <p class="eyebrow blue">The shelf</p>
+      <h2>Five lists. Pick your starting point.</h2>
+      <span class="brush">every deck tracks itself</span>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="gre-vocab.html" data-key="cv_mastered_gre" data-total="1111">
+        <span class="tag">GRE</span>
+        <h3>GRE Vocab <i>→</i></h3>
+        <span class="brush">the high-tier list</span>
+        <p>The words the GRE actually asks. Each card carries the meaning, synonyms, antonyms, and an example.</p>
+        <span class="pct"><b>0%</b><small>0 / 0 words</small></span>
+        <span class="bar"><i></i></span>
+      </a>
+
+      <a class="card" href="vocab-400.html" data-key="cv_mastered" data-total="400">
+        <span class="tag">400 words</span>
+        <h3>Vocab 400 <i>→</i></h3>
+        <span class="brush">start here</span>
+        <p>Four hundred essential words in twenty decks. The fastest route to a noticeably bigger vocabulary.</p>
+        <span class="pct"><b>0%</b><small>0 / 0 words</small></span>
+        <span class="bar"><i></i></span>
+      </a>
+
+      <a class="card" href="vocab-520.html" data-key="cv_mastered_520" data-total="520">
+        <span class="tag">520 words</span>
+        <h3>Vocab 520 <i>→</i></h3>
+        <span class="brush">the deeper stash</span>
+        <p>Five hundred twenty words for when four hundred isn't enough. Same drill, deeper bench.</p>
+        <span class="pct"><b>0%</b><small>0 / 0 words</small></span>
+        <span class="bar"><i></i></span>
+      </a>
+
+      <a class="card" href="vocab-a-z.html" data-key="cv_mastered_az" data-total="1925">
+        <span class="tag">A–Z</span>
+        <h3>A-Z Vocab <i>→</i></h3>
+        <span class="brush">everything, a to z</span>
+        <p>All nineteen hundred twenty-five words, grouped A to Z. The full shelf, nothing skipped.</p>
+        <span class="pct"><b>0%</b><small>0 / 0 words</small></span>
+        <span class="bar"><i></i></span>
+      </a>
+
+      <a class="card" href="word-smart-i.html" data-key="ujs_ws_mastered" data-total="830">
+        <span class="tag">Word Smart · বাংলা</span>
+        <h3>Word Smart I <i>→</i></h3>
+        <span class="brush">bangla edition</span>
+        <p>Eight hundred thirty Word Smart words with Bangla meanings. Master a word, watch it leave the deck.</p>
+        <span class="pct"><b>0%</b><small>0 / 0 words</small></span>
+        <span class="bar"><i></i></span>
+      </a>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <p class="eyebrow blue">How it works</p>
+      <h2>Flip it. Test it. Keep it.</h2>
+      <span class="brush">that's the whole routine</span>
+    </div>
+
+    <div class="trio">
+      <div class="feat">
+        <div class="icon"><svg viewBox="0 0 64 56" fill="none" stroke="#0000ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="8" width="34" height="42" rx="5"/><path d="M22 20c4-3 9-3 12 0M22 28c4-3 9-3 12 0"/><path d="M52 18c4 4 4 12 0 16m0 0l-4-3m4 3l3-5" stroke-dasharray="1 6"/></svg></div>
+        <h3>Flip <i>→</i></h3>
+        <span class="brush">look first</span>
+        <p>One card at a time: the word on the front, meaning, pronunciation, synonyms, antonyms, and an example on the back.</p>
+      </div>
+      <div class="feat">
+        <div class="icon"><svg viewBox="0 0 64 56" fill="none" stroke="#0000ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="10" width="48" height="36" rx="5"/><path d="M20 28l7 7 14-14"/><path d="M42 42l10 8"/></svg></div>
+        <h3>Test <i>→</i></h3>
+        <span class="brush">no cheating</span>
+        <p>Four quiz modes — synonym, antonym, Bangla, fill in the blank — so you find out what actually stuck.</p>
+      </div>
+      <div class="feat">
+        <div class="icon"><svg viewBox="0 0 64 56" fill="none" stroke="#0000ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 48h48"/><rect x="12" y="32" width="9" height="16" rx="2"/><rect x="28" y="22" width="9" height="26" rx="2"/><rect x="44" y="10" width="9" height="38" rx="2"/><path d="M12 20l14-8 12 6 14-10" stroke-dasharray="2 6"/></svg></div>
+        <h3>Track <i>→</i></h3>
+        <span class="brush">watch it shrink</span>
+        <p>Every mastered word is saved in your browser, so the deck shrinks as you go and the bar on each list fills up.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="signoff">yours, wordly</p>
+    <p class="fdesc">For anyone building a bigger vocabulary: five lists, 4,786 words, and one routine. Open a deck and flip — the rest takes care of itself.</p>
+    <div class="fine">
+      <span><b>Prepared by Rifat</b> · Revision data stays in this browser · No accounts, no tracking</span>
+      <span class="brush">keep going.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  function readDone(key){
+    try{ var a=JSON.parse(localStorage.getItem(key)||'[]'); return Array.isArray(a)?new Set(a).size:0; }
+    catch(e){ return 0; }
+  }
+  function update(){
+    document.querySelectorAll('.card[data-key]').forEach(function(card){
+      var total=+card.dataset.total, done=Math.min(readDone(card.dataset.key),total);
+      var p=total?done/total*100:0;
+      var txt=(p>0&&p<10)?p.toFixed(1):Math.round(p);
+      card.querySelector('.pct b').textContent=txt+'%';
+      card.querySelector('.pct small').textContent=done+' / '+total+' words';
+      card.querySelector('.bar i').style.width=p+'%';
+    });
+  }
+  update();
+  addEventListener('pageshow',update);
+  addEventListener('storage',update);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) update(); });
+})();
+</script>
+</body>
+</html>
